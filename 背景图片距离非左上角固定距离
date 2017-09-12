@@ -1,0 +1,33 @@
+//由于background-position的参数(top left)是距离padding-box左上角的距离,如果想要将图片固定距离右上角一定的距离
+//例如一个关闭按钮，那么需要使用扩展语法或者calc
+
+//html
+<div class="fb">
+</div>
+
+//css
+//方法1
+.fb{
+    width:300px;
+    height:200px;
+    margin-left: 100px;
+    margin-top: 100px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    background: url(close.png) right top no-repeat;/*写给不支持扩展语法的浏览器*/
+    background-position: right 10px top 10px;   /*css3扩展语法:距离右侧10px，上侧10px*/
+    background-size: 50px 50px;/*控制背景图片大小*/
+}
+
+//方法2
+.fb{
+    width:300px;
+    height:200px;
+    margin-left: 100px;
+    margin-top: 100px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    background: url(close.png) right top no-repeat;/*写给不支持扩展语法的浏览器*/
+    background-position: calc(100% - 10px) 10px;/*利用calc计算，百分比很关键，注意加号减号前必须有空格，否则解析错误*/
+    background-size: 50px 50px;/*控制背景图片大小*/
+}
