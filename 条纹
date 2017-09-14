@@ -1,0 +1,7 @@
+//原理：利用background的linear-gradient实现
+.strip{
+    width:200px;
+    height:200px;
+    background: linear-gradient(blue 30%,green 30%);/* 不等宽条纹，2种颜色，意识是顶部0-30%为blue，30%-30%为渐变，当然是0,30%-70%是绿色*/
+    background-size:100% 20px;/*水平铺满，垂直为20像素，背景会默认重复填充*/
+}
