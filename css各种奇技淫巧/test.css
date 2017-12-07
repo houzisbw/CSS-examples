@@ -1,0 +1,117 @@
+*{
+    margin:0;
+    padding:0;
+}
+.clear{
+    zoom:1;
+}
+/*重要，设置上一级的宽高，不会出现滚动条*/
+html,body{
+    height:100%;
+}
+
+.clear:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+body{
+    font-family: "Microsoft YaHei";
+    padding:50px;
+}
+
+.css-section{
+    width:200px;
+    height:200px;
+    border: 1px solid #aaaaaa;
+    position: relative;
+    margin-right:50px;
+    margin-bottom: 50px;
+    float:left;
+}
+/*椭圆*/
+.oval{
+    width:100px;
+    height:50px;
+    background-color: orange;
+    /*border-radius:50% / 50% 指的是水平半径和垂直半径分别是宽高的一半，所以形成椭圆*/
+    border-radius: 50%;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+}
+
+/*平行四边形*/
+.parallelogram{
+    width:100px;
+    height:50px;
+    background-color: dodgerblue;
+    /*基于div中心进行变换,默认就是50%*/
+    transform-origin: 50% 50%;
+    position: absolute;
+    left:50%;
+    top:50%;
+    /*倾斜div*/
+    transform: translate(-50%,-50%) skewX(-45deg);
+    color:#fff;
+    line-height: 50px;
+    text-align: center;
+}
+/*让文字摆正，注意要让span为block才行，否则skew不起作用*/
+.parallelogram span{
+    transform:skew(45deg);
+    display: inline-block;
+}
+
+/*菱形图片:外层div旋转45度，里面图片旋转-45度*/
+.diamond{
+    width:100px;
+    height:100px;
+    /*注意顺序有关系，先位移到中央再旋转，否则不居中*/
+    transform:  translate(-50%,-50%) rotate(45deg);
+    overflow: hidden;
+    position: absolute;
+    left:50%;
+    top:50%;
+    background-color: red;
+}
+.diamond img{
+    /*负角度旋转，放大图片防止出现空白*/
+    transform: rotate(-45deg) scale(1.42);
+    /*让img充满div*/
+    width:100%;
+    height:100%;
+}
+/*梯形*/
+.ladder{
+    height:40px;
+    background-color: cornflowerblue;
+    position: absolute;
+    padding:5px;
+    line-height: 40px;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    color:#fff;
+}
+.ladder:before,.ladder:after{
+    content:'';
+    width:40px;
+    height:50px;
+    position: absolute;
+    background-color: cornflowerblue;
+    top:0;
+    /*设置z-index为-1，防止2个斜边遮住文字*/
+    z-index:-1;
+}
+/*利用前后伪元素倾斜来模拟梯形的2个边*/
+.ladder:before{
+    left:-20px;
+    transform: skewX(-30deg);
+}
+.ladder:after{
+    right:-20px;
+    transform: skewX(30deg);
+}
+
