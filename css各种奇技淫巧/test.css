@@ -115,3 +115,51 @@ body{
     transform: skewX(30deg);
 }
 
+
+/*单侧阴影*/
+.single-shadow{
+    width:100px;
+    height:100px;
+    background-color: lightskyblue;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:  translate(-50%,-50%);
+    /*第4个参数是扩张半径，当为负数时减少阴影尺寸
+      左右2侧阴影被减少到看不到，然后下移阴影，最后
+      变成单侧阴影*/
+    box-shadow:0 7px 5px -4px rgba(0,0,0,0.7);
+}
+.fur-glass{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:  translate(-50%,-50%);
+    width:100px;
+    height:100px;
+    background: url('./images/1.jpg');
+    background-size: 100% 100%;
+}
+.fur-glass:after{
+    content:'';
+    position: absolute;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    filter:blur(10px);
+    -webkit-filter: blur(20px);
+}
+.folder-corner{
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:  translate(-50%,-50%);
+    width:100px;
+    height:100px;
+    /*回退*/
+    background: #58a;
+    /*实现折角效果*/
+    background: linear-gradient(to left bottom, transparent 50%, rgba(0,0,0,0.4) 0) no-repeat 100% 0 / 2em 2em,
+                linear-gradient(-135deg, transparent 1.5em,#58a 0);
+}
