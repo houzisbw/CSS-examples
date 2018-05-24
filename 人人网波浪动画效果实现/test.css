@@ -1,0 +1,92 @@
+*{
+    margin:0;
+    padding:0;
+}
+.clear{
+    zoom:1;
+}
+/*重要，设置上一级的宽高，不会出现滚动条*/
+html,body{
+    height:100%;
+    width:100%;
+}
+
+.clear:after{
+    content: "020";
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+}
+body{
+    font-family: "Microsoft YaHei";
+}
+/*.left{*/
+    /*width:200px;*/
+    /*height:100%;*/
+    /*background-color: red;*/
+    /*float:left;*/
+    /*margin-left: -100%;*/
+    /*position: relative;*/
+    /*left:-200px*/
+/*}*/
+/*.main{*/
+    /*background-color: green;*/
+    /*height:100%;*/
+    /*width:100%;*/
+    /*float:left*/
+/*}*/
+/*.right{*/
+    /*float:left;*/
+    /*width:300px;*/
+    /*background-color: aqua;*/
+    /*height:100%;*/
+    /*margin-left: -300px;*/
+    /*position: relative;*/
+    /*right:-300px;*/
+/*}*/
+/*.container{*/
+    /*height:100%;*/
+    /*overflow: hidden;*/
+    /*padding:0 300px 0 200px;*/
+/*}*/
+
+/*.outer{*/
+    /*height:100%;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+
+/*}*/
+.animation-step{
+    width:150px;
+    height:150px;
+    background: url('images/other1-t.jpg')  no-repeat;
+    background-position: 0 0;
+}
+/*steps作用于2个帧之间，而不是整个keyframes之间，这个例子中steps(10)把0-100分成10份，然后执行，所以每次背景位置移动1500/10=150px*/
+/*forwards让动画播放完成后保持在最后一帧，很关键，否则就回到第一帧了*/
+.active{
+    animation:run 0.5s steps(10) forwards;
+}
+.inactive{
+    animation: leave 0.5s steps(9) forwards;
+}
+
+@keyframes run {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: 0 -1500px;
+    }
+}
+@keyframes leave {
+    0%{
+        background-position: 0 -1500px;
+    }
+    100%{
+        /*注意最后一帧不是3000px，而是3000-150*/
+        background-position: 0 -2850px;
+    }
+}
